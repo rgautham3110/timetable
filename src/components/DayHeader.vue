@@ -4,20 +4,36 @@
             {{day}}
             <div class="add" :class="isToday ? 'selected' : 'not-selected'" @click="toggleAddTaskModal()" /> 
         </div>
+        <AddTaskModal v-if="showAddTaskModal" class="modal"/>
     </div>
 </template>
 
 <script>
-
+import AddTaskModal from './AddTaskModal'
 export default {
+
     name: 'DayHeader',
     props: ['isToday', 'day'],
+    components:{
+        AddTaskModal
+    },
+    data(){
+        return {
+            showAddTaskModal: false
+        }
+    },
+    methods:{
+        toggleAddTaskModal(){
+            this.showAddTaskModal = !this.showAddTaskModal;
+        }
+    }
 }
 </script>
 
 <style scoped>
 
 .home{
+    position: relative;
     align-items: center;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
@@ -60,7 +76,11 @@ export default {
 }
 .bg.selected{
     box-shadow: 0 0 4px grey;
-}
+} 
 
+.modal{
+    position: absolute;
+    top:55px;
+}
 
 </style>
