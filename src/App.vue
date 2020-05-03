@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavBar class="nav-bar"/>
+    <Timetable class="time-table"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import NavBar from './components/NavBar';
+import Timetable from './components/Timetable'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavBar,
+    Timetable
   }
 }
 </script>
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.nav-bar{
+  position: fixed;
+  width: 100%;
+}
+.time-table{
+  margin-top:70px
+}
+
 </style>
