@@ -4,31 +4,52 @@
             Add Task 
         </div>
         <div class="task-name">
-            <input type="text" placeholder="Task Name">
+            <input type="text" placeholder="Task Name" v-model="taskName">
         </div>
         <div class="time">
             <div class="time-div">
                 <div>Start time:</div> 
-                <input type="time" class="time-input">
+                <input type="time" class="time-input" v-model="startTime">
             </div>
             <div class="time-div">
                 <div>End time:</div> 
-                <input type="time" class="time-input">
+                <input type="time" class="time-input" v-model="endTime">
             </div>
         </div>
-        <div class="add">Add</div>
+        <div class="add" @click="onAdd">Add</div>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-    name: 'AddTaskModal'
+    name: 'AddTaskModal',
+    props: ['day'],
+    data(){
+        return {
+            taskName: "",
+            startTime: "",
+            endTime: "",
+        }
+    },
+    methods:{
+        ...mapActions(['addTask']),
+        onAdd(){
+            this.addTask( {
+                day: this.day,
+                taskName: this.taskName,
+                startTime: this.startTime,
+                endTime: this.endTime
+            })
+        }
+    }
 }
 </script>
 
 <style scoped>
 .home{
-    padding: 10px;
+    padding: 20px;
     background: white;
     color: black;
     border: 1px solid #ABB5C3;
@@ -40,6 +61,7 @@ export default {
 .header{
     color: #011627;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 .task-name{
     margin-bottom: 20px;

@@ -1,5 +1,6 @@
 <template>
     <div :class="classname">
+        {{tasks}}
     </div>
 </template>
 
@@ -7,7 +8,7 @@
 
 export default {  
     name: 'TaskLine',
-    props: ['classname'],
+    props: ['classname', 'tasks'],
 }
 </script>
 

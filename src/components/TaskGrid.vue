@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <TimeBar class="time-bar"/>
-        <TaskLine v-for="index in 7" :key="index" :classname="index%2==0?'odd':'even'" class="task-line"/>
+        <TaskLine v-for="(day,index) in days" :key="index" :classname="index%2==0?'odd':'even'" class="task-line" :tasks="tasksForDay(day)"/>
     </div>
 </template>
 
@@ -9,12 +9,29 @@
 import TimeBar from './TimeBar';
 import TaskLine from './TaskLine';
 
+import {mapGetters} from 'vuex';
+
 export default {
     name: 'TaskGrid',
+    data(){
+        return{
+            days: [
+                'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+            ]
+        }
+    },
     components: {
         TimeBar,
         TaskLine
-    }
+    },
+    computed: mapGetters(["tasks"]),
+    methods:{
+        tasksForDay: function(day){
+            return this.tasks.filter(task=>{
+                return task.day == day
+            })
+        }
+    },
 }
 </script>
 

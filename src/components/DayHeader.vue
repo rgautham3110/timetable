@@ -4,7 +4,7 @@
             {{day}}
             <div class="add" :class="isToday ? 'selected' : 'not-selected'" @click="toggleAddTaskModal()" /> 
         </div>
-        <AddTaskModal v-if="showAddTaskModal" class="modal"/>
+        <AddTaskModal v-if="showAddTaskModal" class="modal" :day="day"/>
     </div>
 </template>
 
