@@ -1,40 +1,53 @@
 <template>
   <div id="app">
+    <TaskGrid class="task-grid"/>
+    <DateBar class="date-bar"/>
     <NavBar class="nav-bar"/>
-    <Timetable class="time-table"/>
   </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar';
-import Timetable from './components/Timetable'
+import DateBar from './components/DateBar';
+import TaskGrid from './components/TaskGrid'
+
 export default {
   name: 'App',
   components: {
     NavBar,
-    Timetable
+    DateBar,
+    TaskGrid
   }
 }
 </script>
 
 <style>
+*{
+  margin: 0px;
+  padding: 0px;
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
 #app {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-*{
-  margin: 0px;
-  padding: 0px;
-}
 .nav-bar{
   position: fixed;
+  top: 0px;
   width: 100%;
 }
-.time-table{
-  margin-top:70px
+.date-bar{
+  position: fixed;
+  top:70px;
+  width: 100%
+}
+
+.task-grid{
+  margin-top: 120px;
 }
 
 </style>

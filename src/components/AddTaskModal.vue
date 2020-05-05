@@ -90,6 +90,7 @@ export default {
     border-radius: 5px;
     box-shadow: 0 0 4px grey;
     width: fit-content;
+    cursor: pointer;
 }
 
 </style>
