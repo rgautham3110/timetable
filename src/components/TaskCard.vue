@@ -4,8 +4,11 @@
             <div class="heading">
                 {{this.task.taskName}}
             </div>
-            <div class="time">
-                {{this.task.startTime}} to {{this.task.endTime}}
+            <div class="footer">
+                <div class="time">
+                    {{this.task.startTime}} to {{this.task.endTime}}
+                </div>
+                <img src="../assets/delete.svg" id="del-icon"/>
             </div>
         </div>
     </div>
@@ -46,21 +49,36 @@ export default {
     position: relative;
     margin-top: var(--margin-top);
     height: var(--card-height);
-    color: black;
+    color: #83423F;
 }
 
 .card{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: var(--inner-height);
-    margin: 10px ;
+    margin: 10px;
+    padding: 10px;
     background: #FFA69E;
     box-shadow: 0 0 5px lightgrey;
     border-radius: 10px;
 }
 
 .heading{
+    color: #83423F;
     font-size: 23px;
+    font-weight: bold;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#del-icon{
+    color: red;
 }
 
 </style>

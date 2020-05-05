@@ -43,7 +43,6 @@ export default {
 
 .add{
     padding-left: 10px;
-    width: 24px;
     height: 24px;
     cursor: pointer;
 }
@@ -70,8 +69,8 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 35px;
 }
 .bg.selected{
