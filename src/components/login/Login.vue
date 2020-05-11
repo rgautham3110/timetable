@@ -45,11 +45,24 @@ export default {
                     password: this.password
                 })
             })
-            .then(response=>response.json())
-            .then(data=>{
-                localStorage.setItem("authentication-token", data.token)
-                localStorage.setItem("username", this.username)
-                this.$router.push('/')
+            .then(response=>{
+                let status = response.status.toString()
+                if(status[0] != '2'){
+                    this.isError = true
+                }else{
+                    this.isError = false
+                }
+                response.json()
+                .then(data=>{
+                    this.message = data.msg
+                    if(this.isError){
+                        this.showMessage = true;
+                        return
+                    }
+                    localStorage.setItem("authentication-token", data.token)
+                    localStorage.setItem("username", this.username)
+                    this.$router.push('/')
+                });
             })
             .catch(error=>console.log(error))
         },
