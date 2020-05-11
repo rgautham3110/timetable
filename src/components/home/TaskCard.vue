@@ -8,13 +8,15 @@
                 <div class="time">
                     {{this.task.startTime}} to {{this.task.endTime}}
                 </div>
-                <img src="../assets/delete.svg" id="del-icon"/>
+                <img src="../../assets/delete.svg" id="del-icon" @click="deleteTaskById"/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
     name: 'TaskCard',
     props: ['task'],
@@ -38,8 +40,15 @@ export default {
         let start =  this.task.startTime.split(':')
         let end =  this.task.endTime.split(':')
         this.marginTop = (parseInt(start[0]) + parseInt(start[1])/60) * 120
-        this.cardHeight = ( ( parseInt(end[0]) - parseInt(start[0]) ) ) * 120
+        this.cardHeight = ( (parseInt(end[0]) + parseInt(end[1])/60) - (parseInt(start[0]) + parseInt(start[1])/60) ) * 120
         this.innerHeight = this.cardHeight - 10;
+    },
+    methods: {
+        ...mapActions(['deleteTask']),
+        deleteTaskById(){
+            console.log(this.task._id)
+            this.deleteTask(this.task._id)
+        }
     }
 }
 </script>
@@ -79,6 +88,7 @@ export default {
 
 #del-icon{
     color: red;
+    cursor: pointer;
 }
 
 </style>

@@ -13,18 +13,25 @@ import AddTaskModal from './AddTaskModal'
 export default {
 
     name: 'DayHeader',
-    props: ['isToday', 'day'],
+    props: ['day', 'index'],
     components:{
         AddTaskModal
     },
     data(){
         return {
-            showAddTaskModal: false
+            showAddTaskModal: false,
+            isToday: false,
         }
     },
     methods:{
         toggleAddTaskModal(){
             this.showAddTaskModal = !this.showAddTaskModal;
+        }
+    },
+    created(){
+        let today = new Date().getDay() - 1;
+        if(this.index==today){
+            this.isToday = true
         }
     }
 }
@@ -48,10 +55,10 @@ export default {
 }
 
 .add.not-selected{
-    content:url("../assets/add-unselected.png")
+    content:url("../../assets/add-unselected.png")
 }
 .add.selected{
-    content:url("../assets/add-selected.png")
+    content:url("../../assets/add-selected.png")
 }
 
 .selected{
@@ -80,6 +87,20 @@ export default {
 .modal{
     position: absolute;
     top:55px;
+}
+
+.error-notification{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: lightsalmon;
+    color: darkred;
+    border-radius: 5px;
+    font-weight: 600;
+    width: 300px;
 }
 
 </style>

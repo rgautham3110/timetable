@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <div class="blank"/>
-      <DayHeader v-for="(day, index) in days" :key="index" :day="day" :isToday="today==day ? true : false" class="day-header"/>
+      <DayHeader v-for="(day, index) in days" :key="index" :day="day" :index="index" class="day-header"/>
   </div>
 </template>
 
@@ -14,10 +14,9 @@ export default {
     },
     data(){
         return {
-            today : 'Monday',
             days: [
                 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
-            ]
+            ],
         }
     }
 }
